@@ -1,0 +1,37 @@
+/******************************Миксины**********************************************************************************************************************************/
+
+//Заголовки и текст
+// Миксины - шрифт
+@mixin fontz($fz, $fw, $col, $lh, $ls) {
+	font-size: $fz;
+	font-weight: $fw;
+	color: $col;
+	line-height: $lh;
+	letter-spacing: $ls;
+}
+//flexbox
+@mixin flexbox($df: flex, $fdc: column, $aic: center, $jcsb: space-between, $fww: wrap) {
+	display: $df;
+	flex-direction: $fdc;
+	align-items: $aic;
+	justify-content: $jcsb;
+	flex-wrap: $fww;
+}
+//Адаптивные свойства
+@mixin adapt($property, $startSize, $minSize, $type) {
+	$addSize: $startSize - $minSize;
+	@if $type==1 {
+		#{$property}: $startSize + px;
+		@media (max-width: #{$maxWidthContainer + px}) {
+			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+		}
+	} @else if $type==2 {
+		#{$property}: $startSize + px;
+		@media (min-width: #{$maxWidthContainer + px}) {
+			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+		}
+	} @else {
+		#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+	}
+}
+/**************************************************************************************************************************************/
