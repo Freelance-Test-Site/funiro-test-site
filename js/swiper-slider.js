@@ -15,6 +15,7 @@ new Swiper('.slider-main__body', {
 	loop: true,
 	slidesPrGroup: 1,
 	slideToClickedSlide: true,
+	parallax: true,
 
 	navigation: {
 		nextEl: '.main-slider .slider-arrow_next',
